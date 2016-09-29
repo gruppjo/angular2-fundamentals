@@ -3,6 +3,7 @@ import {
   NoteCard,
   NoteCreator
 } from '../ui';
+import { NoteService } from '../services';
 
 @Component({
   selector: 'notes-container',
@@ -42,28 +43,23 @@ import {
 })
 
 export class Notes {
-  notes = [{
-    title: 'new note',
-    value: 'note here',
-    color: 'lightblue'
-  },
-  {
-    title: 'new note',
-    value: 'note here',
-    color: 'lightblue'
-  },
-  {
-    title: 'new note',
-    value: 'note here',
-    color: 'lightblue'
+  constructor(private noteService: NoteService) {
+    this.noteService.getNotes()
+    .subscribe(res => { this.notes = res.data; console.log(res) });
   }
-  ]
 
-  onNoteChecked(note, i) {
-    this.notes.splice(i, 1);
+  notes = [];
+
+  onNoteChecked(note) {
+    this.noteService.deleteNote(note).
+    subscribe(note => {
+      const i = this.notes.findIndex(localNote => localNote.id === note.id);
+      this.notes.splice(i, 1);
+    })
   }
 
   onCreateNote(note) {
-    this.notes.push(note);
+    this.noteService.createNote(note)
+    .subscribe(note => this.notes.push(note));
   }
 }
