@@ -1,4 +1,9 @@
-import { Component, Input } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 
 @Component({
   selector: 'note-card',
@@ -65,11 +70,12 @@ export class NoteCard {
     value: 'default value',
     color: 'red'
   }
+  @Output() checked = new EventEmitter();
   private showCheck: boolean = false;
   toggle() {
     this.showCheck = !this.showCheck;
   }
   onChecked() {
-    console.log('clicked');
+    this.checked.next(this.note);
   }
 }
