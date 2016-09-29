@@ -73,7 +73,7 @@ export class NoteCreator {
   newNote = {
     title: '',
     value: '',
-    color: ''
+    color: 'white'
   }
   fullForm: boolean = false;
   colors: string[] = ['#b19cd9', '#ff9691', '#77dd77', '#aec6cf', '#f49ac2', 'white'];
@@ -86,13 +86,14 @@ export class NoteCreator {
     if (title && value) {
       this.createNote.next({title, value, color});
       this.reset();
+      this.toggleFull();
     }
   }
   reset() {
     this.newNote = {
       title: '',
       value: '',
-      color: ''
+      color: 'white'
     }
   }
   selectColor(color) {
