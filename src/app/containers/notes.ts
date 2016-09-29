@@ -32,7 +32,7 @@ import {
             class="col-xs-4"
             *ngFor="let note of notes, let i = index"
             (checked)="onNoteChecked($event, i)"
-            [note]=note
+            [note]="note"
           >
           </note-card>
         </div>
