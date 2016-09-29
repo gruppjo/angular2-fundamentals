@@ -1,8 +1,8 @@
-import * as allServices from './services';
+import * as services from './services';
 const mapValuesToArray = (obj) => Object.keys(obj).map(key => obj[key]);
 
-export const services = [
-  ...mapValuesToArray(allServices)
+export const providers = [
+  ...mapValuesToArray(services)
 ];
 export { routes } from './routes';
 export { App } from './app';

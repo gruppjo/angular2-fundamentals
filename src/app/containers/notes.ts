@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  NoteCard,
-  NoteCreator
-} from '../ui';
+import { NoteCard, NoteCreator } from '../ui';
 import { NoteService } from '../services';
 
 @Component({
